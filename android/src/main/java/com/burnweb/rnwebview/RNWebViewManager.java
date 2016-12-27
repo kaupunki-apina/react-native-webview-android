@@ -25,6 +25,7 @@ public class RNWebViewManager extends SimpleViewManager<RNWebView> {
     public static final int GO_FORWARD = 2;
     public static final int RELOAD = 3;
     public static final int STOP_LOADING = 4;
+    public static final int SET_ALLOW_REDIRECT = 5;
 
     private static final String HTML_MIME_TYPE = "text/html";
 
@@ -176,7 +177,8 @@ public class RNWebViewManager extends SimpleViewManager<RNWebView> {
             "goBack", GO_BACK,
             "goForward", GO_FORWARD,
             "reload", RELOAD,
-            "stopLoading", STOP_LOADING
+            "stopLoading", STOP_LOADING,
+            "setAllowRedirect", SET_ALLOW_REDIRECT
         );
     }
 
@@ -194,6 +196,9 @@ public class RNWebViewManager extends SimpleViewManager<RNWebView> {
                 break;
             case STOP_LOADING:
                 view.stopLoading();
+                break;
+            case SET_ALLOW_REDIRECT:
+                view.setAllowUrlRedirect(args.getBoolean(0));
                 break;
         }
     }

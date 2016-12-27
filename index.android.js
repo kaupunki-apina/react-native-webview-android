@@ -102,6 +102,14 @@ class WebViewAndroid extends Component {
     );
   }
 
+  setAllowRedirect(allowRedirect) {
+    UIManager.dispatchViewManagerCommand(
+      this._getWebViewHandle(),
+      UIManager.RNWebViewAndroid.Commands.setAllowRedirect,
+      {allowRedirect: allowRedirect}
+    );
+  }
+
   render() {
 
     let otherView = null;
