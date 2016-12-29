@@ -158,6 +158,8 @@ class RNWebView extends WebView implements LifecycleEventListener {
                 view.loadUrl(url);
 
                 return false; // then it is not handled by default action
+            } else if (!RNWebView.this.getAllowUrlRedirect() && !url.equals(view.getOriginalUrl())) {
+              return true;
             }
 
             return super.shouldOverrideUrlLoading(view, url);
