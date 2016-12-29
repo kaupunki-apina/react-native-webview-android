@@ -152,14 +152,10 @@ class RNWebView extends WebView implements LifecycleEventListener {
 
     protected class EventWebClient extends WebViewClient {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (RNWebView.this.getAllowUrlRedirect()) {
-                // do your handling codes here, which url is the requested url
-                // probably you need to open that url rather than redirect:
+            System.out.println("Allow redirects" + RNWebView.this.getAllowUrlRedirect());
+            if (!RNWebView.this.getAllowUrlRedirect() && url.equals(view.getOriginalUrl()) {
                 view.loadUrl(url);
-
-                return false; // then it is not handled by default action
-            } else if (!RNWebView.this.getAllowUrlRedirect() && !url.equals(view.getOriginalUrl())) {
-              return true;
+                return true;
             }
 
             return super.shouldOverrideUrlLoading(view, url);
